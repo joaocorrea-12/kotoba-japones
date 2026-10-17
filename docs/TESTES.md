@@ -2,20 +2,34 @@
 
 ## Executado neste ambiente
 
-Ambiente Windows, Python 3.14 e Node.js. Swift, macOS e Xcode não estão instalados. O WSL também não está instalado. Não houve teste em iPhone físico.
+Ambiente local Windows, Python 3.14 e Node.js. Swift, macOS e Xcode não estão instalados localmente. O WSL também não está instalado. **A CI remota em macOS executou a compilação e os testes Swift abaixo.** Não houve teste em iPhone físico.
 
 - `node --check web-prototype/dist/app.mjs`: sintaxe JavaScript aprovada.
 - `node --test web-prototype/tests/engine.test.mjs`: **15 testes passaram**, zero falhas.
 - `python scripts/validate.py`: aprovado; 121 palavras únicas e completas, leituras, JSON, assets e referências válidos. Valida estrutura e integridade, não executa Swift.
 - Ícone RGB original 1024×1024 gerado sem dependências externas; vocabulário copiado para a prévia pelo script.
+- Navegador local: favorito, avanço de palavra e widget simulado, intervalo de 10 minutos persistido após recarregar, revelação e registro de revisão, layout desktop e viewport 390×844 conferidos.
+- Prévia pública por GitHack: HTML, CSS, módulos e as 121 palavras carregaram; a tela Hoje foi conferida. O CDN pode apresentar uma tela de procedência antes de abrir a página.
 
 Os testes JS cobrem intervalos predefinidos/personalizados, fronteira exata, restauração, pausa, fim de semana, retomada, alteração de intervalo, valores inválidos, independência dos avisos, revisão, hash estável e integridade das 121 palavras. São testes da implementação web, não da compilação nativa.
 
-## Preparado para execução em ambiente Apple
+## Executado remotamente em ambiente Apple
 
-`KotobaCoreTests`: 17 casos XCTest cobrindo cronograma, dias ativos, horário de verão, notificações, capacidade, silêncio, semente, conteúdo e repetição espaçada. `KotobaTests`: 2 casos de SwiftData em memória e snapshot. Esses testes **ainda não foram executados localmente**.
+No commit `30e7a9429c7c636d27adb96544dd280048b17934`, a [execução 39072041301](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39072041301) terminou com os três jobs aprovados:
 
-A workflow `Verificar Kotoba` executa verificações portáveis, testes Swift e `xcodebuild test` em um simulador disponível no macOS. O resultado real deve ser lido em GitHub Actions no commit da entrega; a existência do YAML não significa que os jobs passaram. Logs e `Tests.xcresult` são evidência da execução quando disponíveis.
+| Job | Resultado verificado |
+| --- | --- |
+| portable | Validador e 15 testes JS aprovados |
+| swift-core | 17 casos XCTest, zero falhas, executados em macOS |
+| ios | XcodeGen gerou o projeto; app e extensão compilaram; 2 testes XCTest no simulador passaram; `TEST SUCCEEDED` |
+
+`KotobaCoreTests` cobre cronograma, dias ativos, horário de verão, notificações, capacidade, silêncio, semente, conteúdo e repetição espaçada. `KotobaTests` cobre SwiftData em memória e snapshot. O artifact `testes-ios` contém o resultado XCTest. As alterações posteriores de documentação e entrada de hospedagem não mudam o Swift testado.
+
+A workflow `Verificar Kotoba` executa verificações portáveis, testes Swift e `xcodebuild test` em um simulador disponível no macOS. Os logs incluem diagnósticos de extração App Intents/voz do simulador, apesar da conclusão bem-sucedida; a compilação não comprova que a galeria/configuração de widgets ou a voz funcionem em aparelho. Os testes de integração não exercitam a interface SwiftUI completa nem a entrega real de notificações.
+
+## Limite da publicação Sites
+
+O Site privado foi registrado, mas o envio ao helper interativo foi recusado pela política de aprovação do ambiente (`sandbox_approval` desabilitado). A alternativa sem terminal interativo não conseguiu conexão de saída com o Git do Site. Nenhuma publicação Sites foi concluída e o endereço reservado não deve ser usado como URL da prévia. O código continua disponível no GitHub e no ZIP; a prévia navegável verificada usa o CDN do repositório público.
 
 ## Checklist manual necessário no iOS
 

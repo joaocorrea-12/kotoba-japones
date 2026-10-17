@@ -2,10 +2,10 @@
 
 Aplicativo **nativo para iPhone, iOS 17+**, em SwiftUI, gratuito e sem assinaturas. Identidade, código, exemplos e traduções originais. A referência conceitual é microaprendizagem; nenhum código, tela, imagem ou logotipo de Hourly Kana foi utilizado.
 
-**Estado desta entrega:** implementação inicial da Fase 1 em código-fonte. O desenvolvimento ocorreu em Windows, sem Swift/Xcode. Os testes portáveis passaram; os testes Swift e a compilação iOS dependem da execução da CI em macOS ou de Xcode. Esta entrega não é um IPA, não foi instalada em iPhone e ainda não está pronta para a App Store. Consulte [o registro de validação](docs/TESTES.md).
+**Estado desta entrega:** implementação inicial da Fase 1 em código-fonte. O desenvolvimento local ocorreu em Windows; a [CI em macOS](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39072041301) compilou o app e a extensão, aprovou 17 testes Swift e 2 testes de persistência/snapshot no simulador. Os 15 testes JS e a validação dos dados também passaram. Esta entrega não é um IPA, não foi instalada em iPhone físico e ainda não está pronta para a App Store. Consulte [o registro de validação](docs/TESTES.md).
 
 - [Repositório no GitHub](https://github.com/joaocorrea-12/kotoba-japones)
-- [Prévia web interativa](https://kotoba-japones-previa.ardentdell8.chatgpt.site) — protótipo separado do app, com armazenamento no navegador. A disponibilidade de hospedagem deve ser conferida no registro de testes.
+- [Prévia web interativa](https://raw.githack.com/joaocorrea-12/kotoba-japones/30e7a9429c7c636d27adb96544dd280048b17934/web-prototype/dist/index.html) — versão verificada do protótipo, servida do commit público pelo CDN GitHack. Se aparecer a tela de procedência, toque em **Open the page**.
 - [Acompanhar a CI pelo Safari](https://github.com/joaocorrea-12/kotoba-japones/actions)
 
 ## O que foi implementado
@@ -26,7 +26,9 @@ Os módulos completos de curso e exercícios pertencem à Fase 2 e não são sim
 
 ## Abrir a prévia no iPhone
 
-Abra o link da prévia no Safari. Se a hospedagem pedir autenticação, entre na conta proprietária do Site. Explore Hoje, Suas palavras, Revisar e Seu ritmo. O botão **Avançar** move apenas o relógio da simulação. Favoritos e revisões ficam no armazenamento local desse navegador, separados dos dados do futuro app.
+Abra o link da prévia no Safari. O CDN pode mostrar uma tela de procedência com **Open the page** antes de abrir o HTML do nosso repositório público. Explore Hoje, Suas palavras, Revisar e Seu ritmo. O botão **Avançar** move apenas o relógio da simulação. Favoritos e revisões ficam no armazenamento local desse navegador, separados dos dados do futuro app. O link está fixado no commit verificado para não mudar enquanto você experimenta.
+
+A publicação pela plataforma Sites ficou bloqueada neste ambiente e não é apresentada como concluída. A alternativa por CDN foi aberta e verificada no navegador. Para hospedagem própria pelo GitHub, o repositório também inclui a entrada `index.html` e `.nojekyll`: em **Settings → Pages**, selecione **Deploy from a branch → main → /(root)**. Essa ativação depende da conta proprietária; não foi realizada nesta entrega.
 
 O protótipo **não instala widgets iOS nem agenda notificações locais nativas**. O aviso de teste é uma mensagem visual na página; a miniatura do widget demonstra a interface. A fala depende de uma voz japonesa oferecida pelo navegador. O navegador não precisa permanecer executando para calcular qual palavra deveria ser exibida na próxima abertura.
 

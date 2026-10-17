@@ -6,6 +6,6 @@ A pronúncia usa AVSpeechSynthesizer e uma voz japonesa do sistema. Uma voz pode
 
 As notificações são locais e opcionais. O usuário pode revogar a permissão no iOS. Widgets podem mostrar palavras e traduções na tela bloqueada; traduções podem ser ocultadas nos ajustes. Eles não exibem o histórico detalhado.
 
-O protótipo web é independente: preferências, favoritos e revisões ficam no localStorage do navegador. A hospedagem Sites pode ter autenticação e registros próprios da plataforma. A síntese de voz web depende do navegador/sistema e não tem a mesma garantia de disponibilidade offline que uma voz previamente instalada no app nativo.
+O protótipo web é independente: preferências, favoritos e revisões ficam no localStorage do navegador. A prévia é servida de arquivos públicos do GitHub por GitHack; o CDN e o GitHub podem manter registros próprios de acesso. O código da página não envia progresso a esses serviços. A síntese de voz web depende do navegador/sistema e não tem a mesma garantia de disponibilidade offline que uma voz previamente instalada no app nativo.
 
 O app ainda não inclui exportação/importação ou uma tela para apagar todo o progresso. Remover o app elimina seu armazenamento local conforme as regras do iOS; dados do App Group podem depender de outras extensões/apps que usem o grupo. Planejar controles de exportação e exclusão antes da publicação final.

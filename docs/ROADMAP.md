@@ -2,9 +2,9 @@
 
 ## Fase 1 — código inicial nesta entrega
 
-Estrutura, interface, 121 palavras, cronograma, persistência, widgets, notificações, App Group, voz, favoritos/histórico, revisão, testes e documentação estão implementados em código. A conclusão funcional no iOS depende de compilação e testes Apple, assinatura do App Group e verificação em aparelho. Não avançar os módulos secundários antes disso.
+Estrutura, interface, 121 palavras, cronograma, persistência, widgets, notificações, App Group, voz, favoritos/histórico, revisão, testes e documentação estão implementados em código. A CI compilou app/extensão e aprovou 19 testes Swift, além das verificações portáveis. A conclusão funcional no iOS depende de assinatura do App Group e verificação em aparelho. Não avançar os módulos secundários antes disso.
 
-Critérios para encerrar esta fase: CI Swift e build da extensão aprovadas; execução iOS 17+; tela inicial e bloqueada conferidas; fila e permissões testadas; pausa e retomada após relançamento; consumo de bateria observado; reabertura após esgotamento da fila; VoiceOver e Dynamic Type verificados; revisão linguística independente do banco inicial.
+Critérios já atendidos: CI Swift, build do app/extensão e testes automatizados de persistência. Ainda necessários: execução e interface iOS 17+; tela inicial e bloqueada conferidas; fila e permissões reais testadas; pausa e retomada após relançamento; consumo de bateria observado; reabertura após esgotamento da fila; VoiceOver e Dynamic Type verificados; revisão linguística independente do banco inicial.
 
 ## Fase 2 — planejada
 
