@@ -1,0 +1,50 @@
+name: Verificar Kotoba
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar conteúdo e protótipo
+        run: |
+          python3 scripts/validate.py
+          node --test web-prototype/tests/*.test.mjs
+  swift-core:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Testar domínio Swift
+        run: swift test --package-path Packages/KotobaCore
+  ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gerar projeto
+        run: |
+          brew install xcodegen
+          xcodegen generate
+      - name: Selecionar simulador iPhone disponível
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for k,v in d["devices"].items() if "iOS" in k for x in v if "iPhone" in x["name"]))')
+          echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
+      - name: Compilar app, extensão e executar testes SwiftData
+        run: >-
+          xcodebuild -project Kotoba.xcodeproj -scheme Kotoba
+          -destination "platform=iOS Simulator,id=$DEVICE_ID"
+          -derivedDataPath work/DerivedData
+          -resultBundlePath work/Tests.xcresult
+          CODE_SIGNING_ALLOWED=NO test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testes-ios
+          path: work/Tests.xcresult
+          if-no-files-found: ignore

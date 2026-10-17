@@ -1,0 +1,15 @@
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcresult/
+work/
+node_modules/
+.env*
+.openai/local/
+*.ipa
+*.p12
+*.mobileprovision
+Kotoba.xcodeproj/

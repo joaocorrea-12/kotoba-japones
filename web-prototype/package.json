@@ -1,0 +1,9 @@
+{
+  "name": "kotoba-web-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "preview": "python -m http.server 4173 --bind 127.0.0.1 --directory dist"
+  }
+}

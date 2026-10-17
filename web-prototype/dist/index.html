@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ee"><meta name="description" content="Experimente o design do Kotoba: um pouco de japonês, todos os dias. Prévia web do projeto nativo para iPhone.">
+  <title>Kotoba — Japonês todos os dias</title>
+  <link rel="icon" type="image/svg+xml" href="mark.svg"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#today" aria-label="Kotoba, início"><span class="brand-mark" aria-hidden="true">言</span><span>kotoba<small>JAPONÊS TODOS OS DIAS</small></span></a>
+    <nav aria-label="Navegação principal">
+      <a href="#today" data-route="today"><span aria-hidden="true">◉</span> Hoje <span class="nav-jp" lang="ja">今日</span></a>
+      <a href="#words" data-route="words"><span aria-hidden="true">▤</span> Suas palavras <span class="nav-jp" lang="ja">言葉</span></a>
+      <a href="#review" data-route="review"><span aria-hidden="true">▱</span> Revisar <span class="nav-jp" lang="ja">復習</span></a>
+      <a href="#settings" data-route="settings"><span aria-hidden="true">☷</span> Seu ritmo <span class="nav-jp" lang="ja">調整</span></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="tiny-branch" aria-hidden="true">✳</span><p>Pequenos encontros.<br>Novas possibilidades.</p><span class="pill">100% gratuito · sem conta</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span class="top-caption">SEU JAPONÊS, NO SEU TEMPO</span><span class="prototype-tag"><i></i> Prévia web interativa</span></header>
+    <main id="main" tabindex="-1"></main>
+    <footer>Feito para aprender com calma. <span lang="ja">一歩ずつ。</span><span>Protótipo separado do aplicativo iOS nativo.</span></footer>
+  </div>
+  <dialog id="word-dialog"><button class="close" aria-label="Fechar palavra">✕</button><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
