@@ -9,11 +9,30 @@ Versão nativa adicionada ao repositório, com Kotlin/Jetpack Compose, SQLite, A
 - Wrapper obtido do repositório oficial Gradle, tag v8.13.0; JAR conferido por SHA-256.
 - Java, SDK Android e emulador não estão instalados neste ambiente Windows. Não foi declarada compilação local nem execução em aparelho Android.
 
-## Preparado para CI
+## Executado na CI — 18/10/2026
 
-Workflow **Android — APK e testes**: testes JUnit de calendário, intervalos, pausa, dias ativos, notificações, revisão e hash; testes Robolectric de codificação, SQLite e vocabulário; lint; geração de APK debug e AAB release sem assinatura.
+No commit `dfb3fce23250178a059856b56ffdbc83742421bd`, a [execução 39123472848](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39123472848) da workflow **Android — APK e testes** foi aprovada nos dois jobs.
 
-O resultado observado da CI será registrado após sua execução. A existência dos arquivos de configuração não prova que o app compilou.
+| Verificação | Resultado observado |
+| --- | --- |
+| Compilação Kotlin/Compose e recursos | Aprovada |
+| JUnit de domínio | 16 testes, zero falhas/erros |
+| Robolectric: snapshot, SQLite e vocabulário | 5 testes, zero falhas/erros |
+| Lint Android | Aprovado, sem erros bloqueantes; há avisos não bloqueantes de versões/recursos/configurações a revisar antes da publicação |
+| APK debug | Gerado, baixado e validado como ZIP íntegro, com as 121 palavras incluídas |
+| AAB release | Gerado e validado; sem chave de publicação configurada, permanece não assinado |
+| Emulador Android API 35 / Pixel 6 | APK instalado; Activity aberta; hierarquia confirmou a tela Hoje e a palavra do momento; screenshot real salvo |
+
+A checagem em emulador comprova instalação e abertura da tela inicial. Não exerceu todos os controles, widgets, notificações reais nem pronúncia. Esses itens continuam na validação manual abaixo. Alterações posteriores somente na documentação não mudam o código testado.
+
+Artifacts da execução: `kotoba-android-apk`, `kotoba-android-aab-nao-assinado`, `relatorios-android` e `evidencia-emulador-android`. O APK usa chave de depuração da CI. Não é uma versão de publicação nem foi enviado à Google Play.
+
+SHA-256 dos binários extraídos e entregues:
+
+- APK: `6d348485e5b57e1d52bf392c569dfe5d5a39cca35b805aff114ec172f867a955`.
+- AAB não assinado: `5f4503a237fc54e76556c29f7e4762c5b789d6fbb5546515563e97f7b77decca`.
+
+O primeiro pipeline foi corrigido por um pacote SDK obsoleto na preparação do ambiente. O seguinte revelou uma leitura de `StateFlow.value` durante composição, corrigida passando o estado de pausa já observado pela tela. A execução acima valida essas correções.
 
 ## Validação manual pendente
 

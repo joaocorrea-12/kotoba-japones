@@ -2,6 +2,8 @@
 
 Implementação nativa em **Kotlin + Jetpack Compose**, no mesmo repositório do aplicativo iOS. Funciona a partir do Android 8 (API 26), com `compileSdk` e `targetSdk` 36. Não é um WebView da prévia e não exige Mac. Código em `app/src/main/java/org/kotoba/android/`.
 
+**Validação confirmada em 18/10/2026:** APK e AAB gerados, lint aprovado, 21 testes JVM/Robolectric passaram e o APK foi instalado e aberto em um emulador Android API 35. [CI aprovada](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39123472848). Ainda não houve teste em Android físico nem publicação na Google Play. [Registro e limitações](../docs/ANDROID.md).
+
 ## Recursos
 
 - Mesmas 121 palavras originais do projeto: o Gradle inclui diretamente o JSON de `Packages/KotobaCore/Sources/KotobaCore/Resources`, sem uma segunda cópia divergente.
@@ -60,6 +62,8 @@ Se o usuário forçar a parada do app, revogar notificações ou o fabricante bl
 ## Testes e publicação
 
 A workflow compila APK debug e AAB release, executa testes de domínio/SQLite e lint. Build aprovada não comprova entregas reais, comportamento em Doze, voz, interface ou launcher. Confira [o registro Android](../docs/ANDROID.md) para o resultado observado e as pendências.
+
+Um segundo job instala o APK em um emulador, abre a Activity e confirma a presença da tela Hoje e da palavra do momento na hierarquia de interface. A evidência é salva no artifact `evidencia-emulador-android`; esse teste de abertura não substitui testar os demais fluxos em aparelho real.
 
 Para publicar, veja o roteiro abaixo. Nenhuma conta, pagamento, aceitação de contrato ou envio à loja é feito automaticamente.
 

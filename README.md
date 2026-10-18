@@ -1,8 +1,8 @@
 # Kotoba — Japonês todos os dias
 
-Aplicativo **nativo para iPhone, iOS 17+**, em SwiftUI, gratuito e sem assinaturas. Identidade, código, exemplos e traduções originais. A referência conceitual é microaprendizagem; nenhum código, tela, imagem ou logotipo de Hourly Kana foi utilizado.
+Aplicativos **nativos para iPhone (iOS 17+, SwiftUI) e Android (8+, Kotlin/Jetpack Compose)**, gratuitos e sem assinaturas. Identidade, código, exemplos e traduções originais. A referência conceitual é microaprendizagem; nenhum código, tela, imagem ou logotipo de Hourly Kana foi utilizado.
 
-**Versão Android:** o repositório também contém um aplicativo nativo Kotlin/Jetpack Compose em [`android/`](android/README.md), com palavras, intervalos, widgets, notificações, voz e revisão. Pode ser compilado no Windows/Linux/macOS; não é um WebView do protótipo. Consulte [o registro Android](docs/ANDROID.md) e a workflow **Android — APK e testes** para o resultado efetivo da compilação. A publicação na Google Play exige assinatura e etapas próprias da conta de desenvolvedor.
+**Versão Android:** disponível em [`android/`](android/README.md), com palavras, intervalos, widget, notificações, voz e revisão. [CI aprovada](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39123472848): APK/AAB gerados, lint e 21 testes aprovados, instalação e abertura confirmadas em emulador. Pode ser compilada no Windows/Linux/macOS. Ainda requer testes em aparelho real, assinatura e etapas do Google Play Console para publicar. Consulte [o registro Android](docs/ANDROID.md).
 
 **Estado desta entrega:** implementação inicial da Fase 1 em código-fonte. O desenvolvimento local ocorreu em Windows; a [CI em macOS](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39072041301) compilou o app e a extensão, aprovou 17 testes Swift e 2 testes de persistência/snapshot no simulador. Os 15 testes JS e a validação dos dados também passaram. Esta entrega não é um IPA, não foi instalada em iPhone físico e ainda não está pronta para a App Store. Consulte [o registro de validação](docs/TESTES.md).
 
@@ -10,7 +10,7 @@ Aplicativo **nativo para iPhone, iOS 17+**, em SwiftUI, gratuito e sem assinatur
 - [Prévia web interativa](https://raw.githack.com/joaocorrea-12/kotoba-japones/30e7a9429c7c636d27adb96544dd280048b17934/web-prototype/dist/index.html) — versão verificada do protótipo, servida do commit público pelo CDN GitHack. Se aparecer a tela de procedência, toque em **Open the page**.
 - [Acompanhar a CI pelo Safari](https://github.com/joaocorrea-12/kotoba-japones/actions)
 
-## O que foi implementado
+## Recursos do MVP iOS
 
 - Tela Hoje com palavra, hiragana, significado, exemplo, pronúncia, favorito, meta e sequência.
 - 121 entradas introdutórias com romaji, classe, nível estimado, exemplos e notas de uso.
@@ -44,6 +44,7 @@ iOS/App/               SwiftUI, serviços e persistência SwiftData
 iOS/Shared/            Snapshot App Group e auxiliares usados pelos dois targets
 iOS/Widgets/           WidgetKit + configuração por App Intents
 iOS/Tests/             Testes de persistência SwiftData e serialização
+android/               App nativo Kotlin/Compose, widget, agendamento e testes Android
 project.yml            Projeto XcodeGen: app, extensão, testes, capabilities e scheme
 web-prototype/         Prévia HTML/CSS/JS independente, sem dependências externas
 scripts/               Geração de assets e verificações portáveis
