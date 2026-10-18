@@ -2,6 +2,8 @@
 
 Aplicativo **nativo para iPhone, iOS 17+**, em SwiftUI, gratuito e sem assinaturas. Identidade, código, exemplos e traduções originais. A referência conceitual é microaprendizagem; nenhum código, tela, imagem ou logotipo de Hourly Kana foi utilizado.
 
+**Versão Android:** o repositório também contém um aplicativo nativo Kotlin/Jetpack Compose em [`android/`](android/README.md), com palavras, intervalos, widgets, notificações, voz e revisão. Pode ser compilado no Windows/Linux/macOS; não é um WebView do protótipo. Consulte [o registro Android](docs/ANDROID.md) e a workflow **Android — APK e testes** para o resultado efetivo da compilação. A publicação na Google Play exige assinatura e etapas próprias da conta de desenvolvedor.
+
 **Estado desta entrega:** implementação inicial da Fase 1 em código-fonte. O desenvolvimento local ocorreu em Windows; a [CI em macOS](https://github.com/joaocorrea-12/kotoba-japones/actions/runs/39072041301) compilou o app e a extensão, aprovou 17 testes Swift e 2 testes de persistência/snapshot no simulador. Os 15 testes JS e a validação dos dados também passaram. Esta entrega não é um IPA, não foi instalada em iPhone físico e ainda não está pronta para a App Store. Consulte [o registro de validação](docs/TESTES.md).
 
 - [Repositório no GitHub](https://github.com/joaocorrea-12/kotoba-japones)

@@ -14,8 +14,18 @@ android {
         versionName = "0.1.0"
         resourceConfigurations += listOf("pt", "pt-rBR")
     }
+    val uploadStore = providers.environmentVariable("KOTOBA_KEYSTORE_PATH").orNull
+    if (uploadStore != null) signingConfigs.create("upload") {
+        storeFile = file(uploadStore)
+        storePassword = providers.environmentVariable("KOTOBA_STORE_PASSWORD").get()
+        keyAlias = providers.environmentVariable("KOTOBA_KEY_ALIAS").get()
+        keyPassword = providers.environmentVariable("KOTOBA_KEY_PASSWORD").get()
+    }
     buildTypes {
-        release { isMinifyEnabled = false }
+        release {
+            isMinifyEnabled = false
+            if (uploadStore != null) signingConfig = signingConfigs.getByName("upload")
+        }
     }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     kotlinOptions { jvmTarget = "17" }
