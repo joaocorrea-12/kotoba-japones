@@ -63,7 +63,9 @@ class KotobaViewModel(application: Application) : AndroidViewModel(application) 
         try {
             repository.settings(settings)
             refresh()
-            message = if (permissionDenied) "Ajustes salvos. Os avisos ficaram desligados porque a permissão não foi concedida." else "Seu ritmo foi salvo."
+            message = if (permissionDenied || (settings.notifications && !Notifications.allowed(app)))
+                "Ajustes salvos. Os avisos estão bloqueados pelo Android; confira os ajustes de notificações."
+                else "Seu ritmo foi salvo."
         } finally { saving = false }
     }
     override fun onCleared() { speech.close(); super.onCleared() }

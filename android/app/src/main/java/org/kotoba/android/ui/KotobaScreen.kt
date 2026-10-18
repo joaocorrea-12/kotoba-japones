@@ -58,7 +58,7 @@ fun dateTime(at: Instant, zone: String) = DateTimeFormatter.ofPattern("dd/MM, HH
                         0 -> Home(state, model, onReview = { tab = 2 }, onSettings = { tab = 3 })
                         1 -> Library(state, model)
                         2 -> Reviews(state, model)
-                        3 -> SettingsScreen(state.schedule.settings, model)
+                        3 -> SettingsScreen(state.schedule.settings, state.schedule.pausedAt != null, model)
                     }
                 }
                 model.selected?.let { id -> model.words.find { it.id == id }?.let { word ->

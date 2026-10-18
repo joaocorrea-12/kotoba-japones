@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import org.kotoba.android.domain.Settings
 import org.kotoba.android.services.Notifications
 
-@Composable fun SettingsScreen(settings: Settings, model: KotobaViewModel) {
+@Composable fun SettingsScreen(settings: Settings, paused: Boolean, model: KotobaViewModel) {
     var draft by remember(settings) { mutableStateOf(settings) }
     var rotation by remember(settings) { mutableStateOf(if (settings.rotationMinutes in Settings.presets) settings.rotationMinutes else 0) }
     var amount by remember(settings) { mutableStateOf(settings.rotationMinutes.toString()) }
@@ -44,7 +44,7 @@ import org.kotoba.android.services.Notifications
             SettingToggle("Ordem aleatória", draft.random) { draft = draft.copy(random = it) }
             Choice("Nível", draft.level, (5 downTo 1).map { it to "JLPT N$it" }) { draft = draft.copy(level = it) }
             Text("A base inicial tem 121 palavras N5 estimadas. Níveis superiores incluem essa base; conteúdos avançados virão em outra fase.", style = MaterialTheme.typography.bodySmall)
-            OutlinedButton(onClick = { model.pause() }) { Text(if (model.state.value?.schedule?.pausedAt == null) "Pausar trocas e avisos" else "Retomar trocas e avisos") }
+            OutlinedButton(onClick = { model.pause() }) { Text(if (!paused) "Pausar trocas e avisos" else "Retomar trocas e avisos") }
         }
         SettingsCard("Dias de estudo") {
             listOf("Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo").forEachIndexed { i, day ->
