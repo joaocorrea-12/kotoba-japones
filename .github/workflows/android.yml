@@ -1,0 +1,50 @@
+name: Android — APK e testes
+on:
+  push:
+    paths:
+      - 'android/**'
+      - 'Packages/KotobaCore/Sources/KotobaCore/Resources/**'
+      - '.github/workflows/android.yml'
+  pull_request:
+    paths:
+      - 'android/**'
+      - 'Packages/KotobaCore/Sources/KotobaCore/Resources/**'
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+      - name: Instalar SDK Android
+        run: sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+      - name: Testar, verificar e gerar APK e App Bundle
+        run: bash android/gradlew -p android --no-daemon testDebugUnitTest lintDebug assembleDebug bundleRelease
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kotoba-android-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kotoba-android-aab-nao-assinado
+          path: android/app/build/outputs/bundle/release/app-release.aab
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relatorios-android
+          path: |
+            android/app/build/reports/tests/
+            android/app/build/reports/lint-results-debug.html
+            android/app/build/test-results/
+          if-no-files-found: ignore

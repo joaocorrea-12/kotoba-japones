@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Kotoba</string>
+    <string name="widget_name">Kotoba · Uma palavra</string>
+    <string name="widget_description">Uma palavra, sua leitura e significado no seu ritmo.</string>
+    <string name="widget_brand">KOTOBA</string>
+</resources>

@@ -1,0 +1,12 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/widget_root"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/widget_background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="@string/widget_brand" android:textSize="10sp" android:textColor="@color/widget_ink" android:letterSpacing="0.15" />
+        <TextView android:id="@+id/widget_level" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="10sp" android:textColor="@color/widget_ink" />
+    </LinearLayout>
+    <TextView android:id="@+id/widget_word" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textSize="30sp" android:maxLines="1" android:ellipsize="end" android:textColor="@color/widget_ink" android:fontFamily="serif" android:textLocale="ja-JP" />
+    <TextView android:id="@+id/widget_kana" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="13sp" android:maxLines="1" android:ellipsize="end" android:textColor="@color/widget_ink" android:textLocale="ja-JP" />
+    <TextView android:id="@+id/widget_meaning" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:textSize="14sp" android:maxLines="2" android:ellipsize="end" android:textColor="@color/widget_ink" />
+    <TextView android:id="@+id/widget_romaji" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12sp" android:maxLines="1" android:ellipsize="end" android:textColor="@color/widget_ink" android:visibility="gone" />
+    <TextView android:id="@+id/widget_example" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:textSize="14sp" android:textColor="@color/widget_ink" android:maxLines="5" android:ellipsize="end" android:visibility="gone" />
+</LinearLayout>

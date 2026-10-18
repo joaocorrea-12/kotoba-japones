@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.Kotoba" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#F5F4EE</item>
+    </style>
+    <color name="widget_background">#F5F4EE</color>
+    <color name="widget_ink">#304D3E</color>
+</resources>

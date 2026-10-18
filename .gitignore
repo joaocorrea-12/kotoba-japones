@@ -13,3 +13,11 @@ node_modules/
 *.p12
 *.mobileprovision
 Kotoba.xcodeproj/
+android/.gradle/
+android/.kotlin/
+android/**/build/
+android/local.properties
+*.jks
+*.keystore
+*.apk
+*.aab
